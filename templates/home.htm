@@ -1,0 +1,14 @@
+<html>
+<head><title>blah</title></head>
+<body>
+	<table>
+		<tr>
+			{% for timeslot in timeslots %}
+			<th> 
+				{{timeslot.start_time}} 
+			</th>
+			{% endfor %}
+		</tr>
+	</table>
+</body>
+</html>
