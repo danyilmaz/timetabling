@@ -1,14 +1,18 @@
 <html>
 <head><title>blah</title></head>
 <body>
-	<table>
+	<table border ='1px'>
 		<tr>
-			{% for timeslot in timeslots %}
-			<th> 
-				{{timeslot.start_time}} 
-			</th>
+			{% for event in events %}
+			<!-- need to put a check for star_time and/or location here I think- how else do you split over several lines? -->
+			<td> 
+				{{event.title}} <br> {{event.description}} <br> {{event.contact}}
+			</td>
+
+			
 			{% endfor %}
 		</tr>
+		
 	</table>
 </body>
 </html>
