@@ -12,10 +12,9 @@ class Timeslot(models.Model):
 	"""The time slot of the event at the location"""
 	start_time = models.DateTimeField()
 	duration = models.IntegerField()
-	location = models.ForeignKey(Location)
 
 	def __unicode__(self):
-		return u'%s %s' % (self.start_time, self.location)
+		return u'%s' % (self.start_time)
 
 
 class Event(models.Model):
@@ -26,6 +25,7 @@ class Event(models.Model):
 	description = models.TextField()
 	contact = models.CharField(max_length=200)
 	timeslot = models.ForeignKey(Timeslot, related_name='event_timeslot')
+	location = models.ForeignKey(Location, related_name='event_location')
 
 	def __unicode__(self):
 		return self.title
