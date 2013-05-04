@@ -25,7 +25,7 @@ class Event(models.Model):
 	title = models.CharField(max_length=200, unique=True)
 	description = models.TextField()
 	contact = models.CharField(max_length=200)
-	timeslot = models.ForeignKey(Timeslot)
+	timeslot = models.ForeignKey(Timeslot, related_name='event_timeslot')
 
 	def __unicode__(self):
 		return self.title
