@@ -1,33 +1,22 @@
 <html>
 <head><title>blah</title></head>
 <body>
-	<table border ='1px'>
-		<tr>
-			<td>
-			</td>
-			{% for event in timeslots.event_timeslot.all %}
-				{% for location in event %}
-				<td>
-					{{event.location.venue}}
-				</td>
-				{% endfor %}
-			{% endfor %}
-		</tr>
-		{% for timeslot in timeslots %}
-		<tr>
-			<!-- need to put a check for star_time and/or location here I think- how else do you split over several lines? -->
-			<td>
-				{{timeslot.start_time}}
-			</td>
+        <table border ='1px'>
+                {% for timeslot in timeslots %}
+                <tr>
+                        <!-- need to put a check for star_time and/or location here I think- how else do you split over several lines? -->
+                        <td>
+                                {{timeslot.start_time}}
+                        </td>
 
-			{% for event in timeslot.event_timeslot.all %}
-			<td>
-				{{event.title}} <p> {{event.description}} <p> {{event.contact}}
-			</td>
-			{% endfor %}
-		</tr>
-		{% endfor %}
-		
-	</table>
+                        {% for event in timeslot.event_timeslot.all %}
+                        <td>
+                                <p>{{event.title}} ({{event.location}}) </p> <p> {{event.description}} </p> <p> {{event.contact}} </p>
+                        </td>
+                        {% endfor %}
+                </tr>
+                {% endfor %}
+
+        </table>
 </body>
 </html>
