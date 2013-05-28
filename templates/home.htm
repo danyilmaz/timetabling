@@ -2,21 +2,28 @@
 <head><title>blah</title></head>
 <body>
         <table border ='1px'>
-                {% for timeslot in timeslots %}
                 <tr>
-                        <!-- need to put a check for star_time and/or location here I think- how else do you split over several lines? -->
+                        <td></td>
+                        {% for location in locations %}
                         <td>
-                                {{timeslot.start_time}}
+                                {{location.venue}}
                         </td>
-
-                        {% for event in timeslot.event_timeslot.all %}
+                        {% endfor %}
+                </tr>
+                {% for timeslot, location_event in timetable.items %}
+                <tr>
                         <td>
-                                <p>{{event.title}} ({{event.location}}) </p> <p> {{event.description}} </p> <p> {{event.contact}} </p>
+                                {{timeslot}}
+                        </td>
+                        {% for location, event in location_event.items %}
+
+                        <td>
+                                {{event.title}}
                         </td>
                         {% endfor %}
                 </tr>
                 {% endfor %}
-
+                
         </table>
 </body>
 </html>
